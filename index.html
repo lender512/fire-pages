@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Ray Tracer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: #888;
+            font-weight: 300;
+        }
+        
+        .description {
+            max-width: 800px;
+            margin: 3rem auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+            text-align: justify;
+        }
+        
+        .output-container {
+            margin: 3rem auto;
+            max-width: 100%;
+            background: #000;
+            border-radius: 8px;
+            padding: 2rem;
+            overflow-x: auto;
+        }
+        
+        .output-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .github-link {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .github-link a {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #1a1a1a;
+            color: #f0f0f0;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .github-link a:hover {
+            background: #2a2a2a;
+            border-color: #555;
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ASCII Ray Tracer</h1>
+            <p class="subtitle">Renderizado 3D en Tipografía</p>
+        </header>
+        
+        <div class="description">
+            <p>Esta pieza utiliza ray tracing para renderizar una escena 3D como arte ASCII. Implementa iluminación Blinn-Phong (difusa y especular), reflexiones recursivas hasta 3 niveles, y cálculo de sombras mediante ray casting. Cada objeto tiene materiales únicos: superficies metálicas reflectantes, mates opacas, y brillantes tipo espejo. El aspecto distintivo es el mapeo de intensidad lumínica a caracteres ASCII ordenados por densidad visual (de espacios a símbolos densos como #@), creando un gradiente tipográfico de 70+ niveles de gris. El resultado híbrido une renderizado 3D técnicamente sofisticado con estética retro ASCII, comunicando volumen, luz y profundidad mediante tipografía monoespaciada en negrita.</p>
+        </div>
+        
+        <div class="output-container" id="svgContainer">
+            <!-- SVG will be loaded here -->
+        </div>
+        
+        <div class="github-link">
+            <a href="https://github.com/luisberrospi/fire" target="_blank">Ver código fuente</a>
+        </div>
+        
+        <footer>
+            <p>Generative Art · 2025</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Load SVG file
+        fetch('output.svg')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('svgContainer').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error loading SVG:', error);
+            });
+    </script>
+</body>
+</html>
